@@ -66,4 +66,9 @@ class AuthLocalRepository {
       return null;
     }
   }
+
+  Future<void> logout() async {
+    final db = await database;
+    await db.delete(tableName);
+  }
 }

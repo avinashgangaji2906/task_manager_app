@@ -7,6 +7,7 @@ import 'package:frontend_task_app/features/auth/cubit/auth_cubit.dart';
 import 'package:frontend_task_app/features/home/cubit/tasks_cubit.dart';
 import 'package:frontend_task_app/features/home/pages/add_new_task_page.dart';
 import 'package:frontend_task_app/features/home/widgets/date_selector.dart';
+import 'package:frontend_task_app/features/home/widgets/home_drawer.dart';
 import 'package:frontend_task_app/features/home/widgets/task_cards.dart';
 import 'package:frontend_task_app/model/task_model.dart';
 import 'package:intl/intl.dart';
@@ -44,6 +45,10 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
+  void logout() async {
+    context.read<AuthCubit>().logout();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,6 +62,9 @@ class _HomePageState extends State<HomePage> {
             icon: const Icon(CupertinoIcons.add),
           ),
         ],
+      ),
+      drawer: HomeDrawer(
+        onLogout: logout,
       ),
       body: BlocBuilder<TasksCubit, TasksState>(
         builder: (context, state) {

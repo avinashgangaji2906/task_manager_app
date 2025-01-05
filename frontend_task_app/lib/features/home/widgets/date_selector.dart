@@ -36,7 +36,10 @@ class _DateSelectorState extends State<DateSelector> {
             ),
             Text(
               monthName,
-              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+              style: const TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.w800,
+              ),
             ),
             IconButton(
               onPressed: () {
