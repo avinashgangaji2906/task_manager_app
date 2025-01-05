@@ -66,10 +66,42 @@ class HomeDrawer extends StatelessWidget {
               'Logout',
               style: TextStyle(color: Theme.of(context).colorScheme.error),
             ),
-            onTap: onLogout,
+            onTap: () {
+              _showDialogue(context);
+            },
           ),
         ],
       ),
+    );
+  }
+
+  _showDialogue(BuildContext context) {
+    return showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: const Text('Logout'),
+          content: const Text("Are you sure?"),
+          actions: <Widget>[
+            TextButton(
+              child: const Text('Cancel'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+                onLogout;
+              },
+              child: const Text(
+                'Logout',
+                style: TextStyle(color: Colors.red),
+              ),
+            ),
+          ],
+        );
+      },
     );
   }
 }
